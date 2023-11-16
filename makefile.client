@@ -1,0 +1,18 @@
+CC=g++
+PATH_HEADER=~/HW20/:./
+EXE=client
+SRC=client.cpp user.cpp
+OBJ=$(SRC:.cpp=.o)
+
+all: $(SRC) $(EXE) clean 
+
+$(EXE): $(OBJ)
+	$(CC) $(OBJ) -o $@ -I$(PATH_HEADER)
+
+%.o : %.cpp
+	$(CC) -c -lstd++fs -std=c++17 $< -o $@
+
+clean:
+	rm -rf *.o *.a
+
+
